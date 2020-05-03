@@ -1,0 +1,50 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="typo-dark">
+        <div class="container">
+            <!-- Row -->
+
+            <div class="row">
+                {% if tm_id.Image %}
+                <div class="col-md-6">
+                    <img alt="Case" class="img-responsive" src="{{tm_id.Image.url}}">
+                </div>
+                {%endif%}
+                <!-- Column -->
+                <div class="col-md-6">
+                    <!-- Title -->
+                    <div class="about title-container text-left sm">
+                        <div class="title-wrap">
+                            <h3 class="title">Profile Details</h3>
+                            <span class="separator line-separator"></span>
+                        </div>
+                        <p><b>Phone Number:</b> {{tm_id.Phone}}</p>
+                        <p><b>E-mail:</b> {{tm_id.Email}}</p>
+                        <p><b>Bio Data:</b> {{tm_id.Bio_data | safe }}</p>
+                    </div>
+                    <!-- Title -->
+                </div>
+                <!-- Column -->
+            </div>
+
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+</body>
+
+</html>
+{% endblock %}

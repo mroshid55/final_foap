@@ -1,0 +1,176 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Donate</title>
+</head>
+
+<body>
+   <div role="main" class="main">
+      <div class="page-default typo-dark">
+
+         <div class="container">
+            <h2>DONATE YOUR ZAKAT</h2>
+            <br>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+               <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#home">Mobile Account</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#menu1">Bank Account</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#menu2">
+                     <font color="#F48460">Online Donate</font>
+                  </a>
+               </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+               <div id="home" class="container tab-pane active"><br>
+
+                  <!--MOBILE BANKING INFORMATION-->
+                  <h5 class="widget-title">MOBILE BANKING INFORMATION<span></span></h5>
+                  <table class="table table-borderless">
+                     {% for mb in z_m %}
+                     <thead>
+                        <tr>
+                           <th scope="col">{{mb.Mobile_banking_name}}</th>
+                           <th scope="col">{{mb.Mobile_number}}</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                     {% endfor %}
+                  </table>
+
+               </div>
+               <div id="menu1" class="container tab-pane fade"><br>
+                  <!--BANK ACCOUNT INFORMATION-->
+                  <h5 class="widget-title">BANK ACCOUNT INFORMATION<span></span></h5>
+
+                  <table class="table table-borderless">
+                     {% for bn in z_b %}
+                     <thead>
+                        <tr>
+                           <th scope="col">Bank Name</th>
+                           <th scope="col">{{bn.Bank_name}}</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+
+                     <thead>
+                        <tr>
+                           <th scope="col">Branch Name</th>
+                           <th scope="col">{{bn.Branch_name}}</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+
+                     <thead>
+                        <tr>
+                           <th scope="col">Account Name</th>
+                           <th scope="col">{{bn.Account_name}}</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+
+                     <thead>
+                        <tr>
+                           <th scope="col">Account Number</th>
+                           <th scope="col">{{bn.Account_number}}</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+
+                     <thead>
+                        <tr>
+                           <th scope="col">Swift Code</th>
+                           <th scope="col">{{bn.Swift_code}}</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                     {% endfor %}
+                  </table>
+               </div>
+
+               <div id="menu2" class="container tab-pane fade"><br>
+                  <!--BANK ACCOUNT INFORMATION-->
+                  <h5 class="widget-title">ONLINE DONATE INFORMATION<span></span></h5>
+
+                  <table class="table table-borderless">
+                     <p>Upcoming</p>
+                  </table>
+               </div>
+
+
+            </div>
+
+
+            <!-- row -->
+            <div class="row">
+               <!-- Service Hightlight -->
+               <div class="col-sm-8 margin-top-30">
+                  <div role="alert" class="alert md alert-info">
+                     {% for qh in hadith %}
+                     <p>
+                        <blockquote>
+                           <p>{{qh.Quran_hadith | safe }}
+                           </p>
+                           <footer>{{qh.Source}}</footer>
+                        </blockquote>
+                     </p>
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+            <!-- row -->
+
+         </div>
+
+      </div>
+   </div>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section class="typo-dark">
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                {% for abt in ab %}
+                <div class="col-md-6">
+                    <img alt="Case" class="img-responsive" src="{{abt.Image.url}}">
+                </div>
+                <!-- Column -->
+                <div class="col-md-6">
+                    <!-- Title -->
+                    <div class="about title-container text-left sm">
+                        <div class="title-wrap">
+                            <h3 class="title">About Us</h3>
+                            <span class="separator line-separator"></span>
+                        </div>
+                        <p>{{abt.Details | safe }}</p>
+                    </div>
+                    <!-- Title -->
+                </div>
+                <!-- Column -->
+                {% endfor %}
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+
+
+    <!-- Counter End -->
+    <section class="typo-dark bg-grey">
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="title-container text-left sm">
+                        <div class="title-wrap">
+                            <h4 class="title">Why Choose Us?</h4>
+                            <span class="separator line-separator"></span>
+                        </div>
+                    </div>
+                    {% for wcu in cu %}
+                    <ul class="list-icon size-sm">
+                        <li>{{wcu.Title}}</li>
+                    </ul>
+                    {%endfor%}
+                </div><!-- Column -->
+
+                <!--<div class="col-md-8">
+                 <img alt="Case" class="img-responsive" src="images/default/about.jpg" >
+              </div>-->
+                <!-- Column -->
+
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+
+
+
+    <!-- Section -->
+    <section class="bg-white">
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                {% for avt in av %}
+                <div class="col-sm-3">
+                    <!-- Count Block -->
+                    <div class="count-block">
+                        <h5>{{avt.Title}}</h5>
+                        <h3 class="count-number" data-count="{{avt.Value}}">&nbsp;<span class="counter"></span>&nbsp;
+                        </h3>
+                    </div>
+                    <!-- Counter Block -->
+                </div>
+                <!-- Column -->
+                {%endfor%}
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+    <!-- Section -->
+
+
+
+    </div><!-- Row -->
+    </div><!-- Container -->
+    </section><!-- Section -->
+    <!-- Counter End -->
+
+</body>
+
+</html>
+{% endblock %}

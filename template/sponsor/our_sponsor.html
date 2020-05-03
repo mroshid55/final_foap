@@ -1,0 +1,49 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Section -->
+    <section id="Clients" class="typo-dark bg-grey">
+        <div class="container">
+
+            <div class="col-md-12">
+                <div class="title-container sm">
+                    <div class="title-wrap">
+                        <h3 class="title">Our Sponsor/Partner</h3>
+                        <span class="separator line-separator"></span>
+                    </div>
+                </div>
+                <!-- Title Container -->
+            </div>
+            <!-- Clients -->
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="pad-30">
+                        <div class="owl-carousel imgs-center" data-animatein="zoomIn" data-animateout="" data-items="1"
+                            data-loop="true" data-merge="true" data-nav="false" data-dots="false" data-margin=""
+                            data-stagepadding="" data-mobile="2" data-tablet="3" data-desktopsmall="4" data-desktop="6"
+                            data-autoplay="true" data-delay="8000" data-navigation="true">
+                            {% for usp in sp %}
+                            <div class="item"><img src="{{usp.Image.url}}" alt="..."></div>
+                            {%endfor%}
+                        </div><!-- carousel -->
+                    </div><!-- Boxed Block -->
+                </div><!-- Column -->
+            </div><!-- Row -->
+        </div><!-- Container -->
+    </section><!-- Section -->
+</body>
+
+</html>
+{% endblock %}

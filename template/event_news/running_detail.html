@@ -1,0 +1,46 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div role="main" class="main">
+        <div class="page-default typo-dark">
+            {% if rv.Title%}
+            <div class="container">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4>RUNNING EVENT DETAILS</h4>
+                        </div>
+                        <div class="panel-body"><b>Title:</b> {{rv.Title}}</div>
+                        <div class="panel-body"><b>Chief Guest:</b> {{rv.Guest}}</div>
+                        <div class="panel-body"><b>Detail:</b> {{rv.Details | safe }}</div>
+                        <div class="panel-body"><b>Location:</b> {{rv.Location}}</div>
+                        <div class="panel-body"><b>Contact Event Manager:</b> {{rv.Contact}}</div>
+                        <div class="panel-body"><b>Food:</b> {{rv.Food}}</div>
+                        <div class="panel-body"><b>T_Shirt:</b> {{rv.T_shirt}}</div>
+                        <div class="panel-body"><b>Event Date&Time:</b>
+                            <font color='#F48460'>{{rv.Event_DT}}</font>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {%endif%}
+
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

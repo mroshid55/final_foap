@@ -1,0 +1,52 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    {% for vol in Volun_teen %}
+    <div class="page-header lg img-bg parallax-bg bg-cover overlay typo-light" data-background="{{vol.Image.url}}"
+        data-stellar-background-ratio="0.5">
+        <div class="container relative z-index">
+            <div class="row">
+                <!-- Title Block -->
+                <div class="col-md-12">
+                    <div class="title-container sm">
+                        <div class="title-wrap">
+                            <h3>{{vol.Title}}</h3>
+                            <h6>{{vol.Short_describe}}</h6>
+                        </div>
+
+                        <div class="title-wrap">
+                            <h1><a href="{{vol.Link}}" class="alert-link">{{vol.Site_name}}</h1>
+                        </div>
+                    </div>
+                    <!-- Title Container -->
+                </div>
+                <!-- Title Block -->
+                <!-- Page Header Wrapper -->
+            </div>
+            <!-- Coloumn -->
+        </div>
+        <!-- Row -->
+    </div>
+    <!-- Container -->
+    </div>
+    {% endfor %}
+    <!-- Page Header -->
+
+</body>
+
+</html>
+{% endblock %}

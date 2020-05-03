@@ -1,0 +1,46 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div role="main" class="main">
+        <div class="page-default typo-dark">
+            {% if uev.Title%}
+            <div class="container">
+                <div class="panel-group">
+                    <div class="panel panel-danger ">
+                        <div class="panel-heading">
+                            <h4>UPCOMING EVENT DETAILS</h4>
+                        </div>
+                        <div class="panel-body"><b>Title:</b> {{uev.Title}}</div>
+                        <div class="panel-body"><b>Chief Guest:</b> {{uev.Guest}}</div>
+                        <div class="panel-body"><b>Detail:</b> {{uev.Details | safe }}</div>
+                        <div class="panel-body"><b>Location:</b> {{uev.Location}}</div>
+                        <div class="panel-body"><b>Contact Event Manager:</b> {{uev.Contact}}</div>
+                        <div class="panel-body"><b>Food:</b> {{uev.Food}}</div>
+                        <div class="panel-body"><b>T_Shirt:</b> {{uev.T_shirt}}</div>
+                        <div class="panel-body"><b>Event Date&Time:</b>
+                            <font color='#F48460'>{{uev.Event_DT}}</font>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {%endif%}
+
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

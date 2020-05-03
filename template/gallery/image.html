@@ -1,0 +1,73 @@
+{% extends 'master.html' %}
+
+{% block head_title %} Image Gallery {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            position: relative;
+        }
+
+        .text-block {
+            position: absolute;
+            bottom: 132px;
+            right: 20px;
+            background-color: black;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="blog" class="blogsec">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="title-container sm">
+                    <div class="title-wrap">
+                        <h3 class="title">OUR IMAGE GALLERY</h3>
+                        <span class="separator line-separator"></span>
+                    </div>
+                </div>
+                <!-- Title Container -->
+            </div>
+            <div class="row">
+                {% for gi in g_image %}
+                <div class="col-md-4">
+
+                    <div class="thumbnail">
+                        <a href="{{gi.Gallery_image.url}}" target="_blank">
+                            <img src="{{gi.Gallery_image.url}}" alt="Lights" style="width:100%">
+                            <div class="caption">
+                                <p>{{gi.Details |safe }}</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="container">
+                        {% if gi.Active %}
+                        <div class="text-block">
+                            <p>Event-2019</p>
+                            <p>With Our Orphan Chaild</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+{% endblock %}

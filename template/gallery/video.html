@@ -1,0 +1,94 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load embed_video_tags %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video Gallery -->
+    <section id="blog" class="blogsec">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="title-container sm">
+                    <div class="title-wrap">
+                        <h3 class="title">OUR VIDEO GALLERY</h3>
+                        <span class="separator line-separator"></span>
+                    </div>
+                </div>
+                <!-- Title Container -->
+            </div>
+            <div class="row">
+                <!-- Item Begins -->
+                {% for video_g in vg %}
+                <div class="col-sm-4">
+                    <!-- video Grid Wrapper -->
+                    <div class="blog-wrap">
+                        <!-- video Image Wrapper -->
+                        <div class="blog-img-wrap">
+                            <div class="iframe-container">
+
+                                <!-- The video tag: -->
+                                {% video video_g.video as my_video %}
+                                URL: {{ my_video.url }}
+                                Thumbnail: {{ my_video.thumbnail }}
+                                Backend: {{ my_video.backend }}
+
+                                {% video my_video "large" %}
+                                {% endvideo %}
+
+                            </div>
+                        </div>
+                        <!-- video Wraper -->
+                        <!-- video Detail Wrapper -->
+                        <div class="bg-lgrey blog-details">
+                            <h4><a href="#">{{video_g.Title}}</a>
+                            </h4>
+                            <ul class="blog-meta">
+                                <li><i class="fa fa-calendar-o"></i>{{video_g.Date}}</li>
+                            </ul>
+                            <p>{{video_g.Short_describe}}</p>
+                        </div>
+                        <!-- video Detail Wrapper -->
+                    </div>
+                    <br>
+                    <!-- video Wrapper -->
+                </div>
+                <!-- Column -->
+                {%endfor%}
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+    <!-- Section -->
+    <!-- Video Gallery -->
+</body>
+
+</html>
+{% endblock %}

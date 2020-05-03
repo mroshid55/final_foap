@@ -1,0 +1,77 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section id="Team" class="typo-dark">
+        <div class="container">
+            <div class="row">
+                <!-- Title Block -->
+                <div class="col-md-12">
+                    <div class="title-container sm">
+                        <div class="title-wrap">
+                            <h3 class="title">Meet the Team</h3>
+                            <h6 class="title">Get to know the foap: team.</h6>
+                            <span class="separator line-separator"></span>
+                        </div>
+                    </div>
+                    <!-- Title Container -->
+                </div>
+                <!-- Title Block -->
+                <!-- Team Container -->
+                {% for tm in team_mem %}
+                <div class="team-container">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <!-- Member Wrap -->
+                        <div class="member-wrap">
+                            <!-- Member Image Wrap -->
+                            <div class="member-img-wrap">
+                                <img class="img-responsive" alt="Member" src="{{tm.Image.url}}">
+                            </div>
+                            <!-- Member detail Wrapper -->
+                            <div class="member-detail-wrap bg-grey">
+                                <h4 class="member-name">{{tm.Name}} <span class="badge badge-secondary">
+                                        {{tm.status}}</span></h4>
+                                <span>{{tm.Designation}}</span>
+                                <!--<ul class="social-icons">
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
+                                </ul>-->
+                                <!-- Member Social -->
+                                <p><a class="btn" href="{% url 'Profile_view' pk=tm.pk %}">View Profile</a></p>
+                            </div>
+                            <!-- Member detail Wrapper -->
+                        </div>
+                        <!-- Member Wrap -->
+                    </div>
+                    <!-- Column -->
+                    {% endfor %}
+
+
+                </div>
+                <!-- Team Container -->
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+
+</body>
+
+</html>
+{% endblock %}

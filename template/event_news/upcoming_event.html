@@ -1,0 +1,50 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="typo-dark bg-grey">
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="title-container text-left sm">
+                        <div class="title-wrap">
+                            <h3 class="title">Our Upcoming Event</h3>
+                            <span class="separator line-separator"></span>
+                        </div>
+                    </div>
+                    {% for ue in Up_list %}
+                    {% if ue.Active %}
+                    <ul class="list-icon size-sm">
+                        <li>
+                            <h5><a href="{% url 'upcoming_detail' pk=ue.pk %}" class="alert-link">{{ue.Title}}</a></h5>
+                        </li>
+                    </ul>
+                    {% else %}
+                    <h4></h4>
+                    {%endif%}
+                    {%endfor%}
+                </div><!-- Column -->
+                <!-- Column -->
+
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- Container -->
+    </section>
+</body>
+
+</html>
+{% endblock %}

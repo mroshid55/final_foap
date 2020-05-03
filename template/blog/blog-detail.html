@@ -1,0 +1,93 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Details</title>
+</head>
+
+<body>
+
+   <div class="container">
+      <div class="row">
+         <!-- Blog Column -->
+         <div class="col-xs-12 blog-single sm">
+            <div class="blog-single-wrap">
+               {% if N_id.Image_post %}
+               <h4>News Details: </h4>
+               <div class="blog-img-wrap">
+                  <img src="{{N_id.Image_post.url}}" class="img-responsive" alt="Event">
+               </div>
+               {% endif %}
+               <!-- Blog Detail Wrapper -->
+               <div class="blog-single-details">
+                  <h4><a href="#">{{N_id.Title}}</a></h4>
+                  <ul class="blog-meta">
+                     <li><i class="fa fa-calendar-o"></i>{{N_id.Date_time}}</li>
+                  </ul>
+                  <!-- Blog Meta -->
+                  <!-- Blog Description -->
+                  <p>{{N_id.Details | safe }}</p>
+               </div>
+               <!-- Blog Detail Wrapper -->
+            </div>
+
+            <!-- Post Comment Form -->
+
+            <hr>
+            <div class="card-body">
+               {% if new_comment %}
+               <div class="alert alert-success" role="alert">
+                  Your comment is awaiting moderation. This is a preview, your comment will be visible after it has been
+                  approved !!
+               </div>
+               {% else %}
+               <h3>Leave a comment</h3>
+               <form method="POST" style="margin-top: 1.3em;">
+                  {% csrf_token %}
+                  {{ comment_form |crispy  }}
+                  <button type="submit" class="btn">Comment</button>
+               </form>
+               {% endif %}
+            </div>
+
+
+            <div class="row">
+               <!-- Service Hightlight -->
+               <div class="col-sm-8 margin-top-30">
+                  {% for comment in comments %}
+                  <p>
+                     <blockquote>
+                        <p>{{ comment.body | linebreaks }}</p>
+                        <footer>
+                           <font color='#F48460'>{{ comment.name }}</font> {{ comment.created_on }}
+                        </footer>
+                     </blockquote>
+                  </p>
+                  {% endfor %}
+               </div>
+            </div>
+
+         </div>
+         <!-- Column -->
+      </div>
+      <!-- Row -->
+   </div>
+   <!-- Container -->
+   <br>
+
+
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,378 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <title>{% block head_title %} {% endblock %} FOAP</title>
+   <meta name="keywords" content="Foap - One Page" />
+   <meta name="description" content="Foap - One Page ">
+   <!--Chart js-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"
+      integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="{% static 'images/default/favicon.png' %}">
+   <!-- Lib CSS -->
+   <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/animate.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/font-awesome.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/gloryicon.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/gap-icons.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/owl.carousel.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/prettyPhoto.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/menu.css' %}">
+   <link rel="stylesheet" href="{% static 'css/lib/jquery.fancybox.css' %}">
+   <!-- Theme CSS -->
+   <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+   <link rel="stylesheet" href="{% static 'css/theme-responsive.css' %}">
+   <!--[if IE]>
+     <link rel="stylesheet" href="css/ie.css">
+     <![endif]-->
+   <!-- Head Libs -->
+   <script src="{% static 'js/lib/modernizr.js' %}"></script>
+   <!-- Skins CSS -->
+   <link rel="stylesheet" href="{% static 'css/skins/default.css' %}">
+   <!-- Theme Custom CSS -->
+   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+   <!--Quran_Hadith Css-->
+   <link rel="stylesheet" href="{% static 'css/Event_News.css' %}">
+
+
+</head>
+
+<body>
+
+   <!-- Page Loader -->
+   <div id="pageloader">
+      <div class="loader-inner">
+         <img src="{% static 'images/default/preloader.gif' %}" alt="Pre Loader">
+      </div>
+   </div>
+   <!-- Page Loader -->
+
+   <!-- Back to top -->
+   <a href="#0" class="cd-top">Top</a>
+   <!-- Header Begins -->
+   <header id="header" class="default-header colored flat-menu mega-menu-contain-screen">
+      <div class="header-top">
+
+         <div class="container">
+            {% for con in cont %}
+            <nav>
+               <ul class="nav nav-pills nav-top">
+
+                  <li class="phone">
+                     <span><i class="icon icon-Phone2"></i>{{con.Phone}}</span>
+                  </li>
+                  <li class="email">
+                     <span><i class="icon icon-Mail"></i>{{con.Mail}}</span>
+                  </li>
+
+               </ul>
+            </nav>
+            {%endfor%}
+
+
+            <ul class="social-icons">
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+               <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+               <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+
+
+         </div>
+
+      </div>
+      <div class="container">
+         {%for l1 in logo %}
+         <div class="logo">
+            <a href="{% url 'index' %}">
+               <img src="{{l1.Primary_logo.url}}" class="img-responsive logo-stick" alt="">
+               <img src="{{l1.Primary_logo.url}}" class="img-responsive logo-img" alt="">
+            </a>
+         </div>
+         {%endfor%}
+         <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
+            <i class="fa fa-bars"></i>
+         </button>
+      </div>
+      <div class="navbar-collapse nav-main-collapse collapse">
+         <div class="container mega-menu-wide-container">
+            <nav class="nav-main mega-menu">
+               <ul class="nav nav-pills nav-main" id="mainMenu">
+                  <li><a class="smoth-scroll" href="{% url 'index' %}">Home</a></li>
+
+                  <!--Programme-->
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" href="#">
+                        Program
+                        <i class="fa fa-caret-down"></i>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'program_chart' %}">Program Chart</a></li>
+                     </ul>
+                  </li>
+
+                  <!--Projects-->
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" href="#">
+                        Projects
+                        <i class="fa fa-caret-down"></i>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'on_going_projects' %}">On going projects</a></li>
+                        <li><a href="{% url 'upcoming_projects' %}">Upcoming projects</a></li>
+                        <li><a href="{% url 'completed_projects' %}">Completed projects</a></li>
+                     </ul>
+                  </li>
+
+                  <!--Stay Informed-->
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" href="#">
+                        Gallery
+                        <i class="fa fa-caret-down"></i>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'image_gallery' %}">Image Gallery</a></li>
+                        <li><a href="{% url 'video_gallery' %}">Video Gallery</a></li>
+                     </ul>
+                  </li>
+
+                  <!--Event News-->
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" href="#">
+                        Event
+                        <i class="fa fa-caret-down"></i>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'running_event' %}">Running Event News</a></li>
+                        <li><a href="{% url 'upcoming_event' %}">Upcoming Event News</a></li>
+                        <li><a href="{% url 'completed_event' %}">Completed Event News</a></li>
+                     </ul>
+                  </li>
+
+
+
+                  <!--About us-->
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" href="#">
+                        About us
+                        <i class="fa fa-caret-down"></i>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'about-info' %}">The Organization</a></li>
+                        <li><a href="#">Vision Statement</a></li>
+                        <li><a href="#">Mission Statement</a></li>
+                     </ul>
+                  </li>
+
+                  <li><a class="smoth-scroll" href="#footer">Contact Us</a></li>
+
+                  <!--Zakat-->
+                  <li class="last_menu"><a class="btn btn-secondary darks active icon-right"
+                        href="{% url 'zakat-info' %}">
+                        <font color="white">Zakat</font>
+                     </a>
+                  </li>
+
+                  <!--Donate-->
+                  <li class="last_menu"><a class="btn btn-secondary darks active icon-right"
+                        href="{% url 'donate-info' %}">
+                        <font color="white">Donate</font>
+                     </a>
+                  </li>
+
+               </ul>
+            </nav>
+         </div>
+      </div>
+   </header>
+
+
+   {% block scripts %}
+
+
+   {%endblock scripts%}
+
+
+   {% block content %}
+
+
+   {%endblock%}
+
+
+   <!-- Footer -->
+   <footer id="footer" class="footer-1">
+      <div class="main-footer widgets-dark typo-light">
+         <div class="container">
+            <div class="row">
+               <!-- Widget Column -->
+               <div class="col-sm-3">
+                  <!-- Widget -->
+                  <div class="widget no-box">
+                     <!-- Footer Logo -->
+                     {% for l2 in logo %}
+                     <a class="logo" href="{% url 'index' %}">
+                        <img src="{{l2.Secondary_logo.url}}" class="img-responsive" alt="">
+                     </a>
+                     {%endfor%}
+                     <!-- Footer About Us -->
+                     <p>This is a non profitable organizations.</p>
+                     <!-- Footer About Us -->
+                  </div>
+                  <!-- Widget -->
+                  <!-- Widget -->
+                  {% for con1 in cont %}
+                  <div class="widget contact-widget no-box">
+                     <h5>{{con1.Org_Name}}</h5>
+                     <ul>
+                        <li><a href="#"><i class="icon icon-Pointer"></i>{{con1.Address}}</a></li>
+                        <li><a href="#"><i class="icon icon-Phone2"></i>{{con1.Phone}}</a></li>
+                        <li><a href="#"><i class="icon icon-Mail"></i>{{con1.Mail}}</a></li>
+                     </ul>
+                  </div>
+                  {%endfor%}
+                  <!-- Widget -->
+                  <!-- Widget -->
+                  <div class="widget">
+                     <!-- Social Icons Color -->
+                     <ul class="social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                     </ul>
+                  </div>
+                  <!-- Widget -->
+               </div>
+               <!-- Column -->
+               <!-- Widget Column -->
+               <div class="col-sm-3">
+                  <!-- Widget -->
+                  <div class="widget">
+                     <h5 class="widget-title">Get to know us<span></span></h5>
+                     <ul class="go-widget two-column">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'zakat-info' %}">Zakat</a></li>
+                        <li><a href="{% url 'donate-info' %}">Donate</a></li>
+                        <li><a href="#">Vision</a></li>
+                        <li><a href="{% url 'about-info' %}">About Us</a></li>
+                        <li><a href="#">Mission</a></li>
+                     </ul>
+                  </div>
+                  <!-- Widget -->
+               </div>
+               <!-- Column -->
+               <!-- Widget Column -->
+               <div class="col-sm-3">
+                  <!-- Widget -->
+                  <div class="widget">
+                     <h5 class="widget-title">Get involved<span></span></h5>
+                     <ul class="tag-widget">
+
+                        <li><a href="{% url 'meet_the_team' %}">Our Team</a></li>
+
+                        <li><a href="{% url 'doctor_team' %}">Board of Doctor</a></li>
+
+                        <li><a href="{% url 'meet_the_team' %}">Board of Adviser</a></li>
+
+                        <li><a href="{% url 'our_sponsor' %}">Sponsor/Partner</a></li>
+
+                        <li><a href="{% url 'join_in_volunteer' %}">Join In Volunteer</a></li>
+
+                     </ul>
+                  </div>
+               </div>
+               <!-- Column -->
+               <!-- Widget Column -->
+               <!-- Widget Column -->
+               <div class="col-md-3">
+                  <!-- Widget -->
+                  <div class="widget">
+                     <h5 class="widget-title">Subscribe Now<span></span></h5>
+
+                     <!-- Widget -->
+                     <div class="widget subscribe no-box">
+
+                        <form class="input-group subscribe-form" name="subscribe-form" method="post" action="#"
+                           id="subscribe-form">
+                           <div class="form-group has-feedback">
+                              <input class="form-control" type="email" placeholder="E-mail" value=""
+                                 name="subscribe_email">
+                           </div>
+                           <span class="input-group-btn">
+                              <a class="btn" type="submit"><span class="icon icon-Plaine"></span></a>
+                           </span>
+                        </form>
+                     </div><!-- Widget -->
+
+                  </div>
+               </div><!-- Column -->
+               <!-- Column -->
+
+
+            </div>
+            <!-- Row -->
+         </div>
+         <!-- Container -->
+      </div>
+      <!-- Main Footer -->
+      <!-- Footer Copyright -->
+      <div class="footer-copyright typo-light">
+         <div class="container">
+            <div class="row">
+               <!-- Copy Right Content -->
+               <div class="col-md-6">
+                  <p>&copy; Copyright 2020. All Rights Reserved. | By <a href="{% url 'index' %}" title="">FOAP</a></p>
+               </div>
+               <!-- Copy Right Content -->
+               <!-- Copy Right Content -->
+               <div class="col-md-6">
+                  <nav class="sm-menu">
+                     <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                     </ul>
+                  </nav>
+                  <!-- Nav -->
+               </div>
+               <!-- Copy Right Content -->
+            </div>
+            <!-- Footer Copyright -->
+         </div>
+         <!-- Footer Copyright container -->
+      </div>
+      <!-- Footer Copyright -->
+   </footer>
+   <!-- Footer -->
+   <!-- library -->
+   <script src="{% static 'js/lib/jquery.js' %}"></script>
+   <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.appear.min.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.easing.min.js' %}"></script>
+   <script src="{% static 'js/lib/owl.carousel.min.js' %}"></script>
+   <script src="{% static 'js/lib/counter.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.easypiechart.min.js' %}"></script>
+   <script src="{% static 'js/lib/isotope.pkgd.min.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.prettyPhoto.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.stellar.min.js' %}"></script>
+   <script src="{% static 'js/lib/menu.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.fancybox.pack.js' %}"></script>
+   <script src="{% static 'js/lib/jquery.fancybox-media.js' %}"></script>
+   <!-- Theme Base, Components and Settings -->
+   <script src="{% static 'js/theme.js' %}"></script>
+
+</body>
+
+</html>

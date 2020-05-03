@@ -1,0 +1,508 @@
+{% extends 'master.html' %}
+
+{% block head_title %} Welcome To {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Page Main -->
+<div role="main" class="main">
+
+   <!-- Home Slider -->
+
+   <div id="main_slider" class="owl-carousel" data-animatein="" data-animateout="" data-items="1" data-margin=""
+      data-loop="true" data-merge="true" data-nav="true" data-dots="false" data-stagepadding="" data-mobile="1"
+      data-tablet="1" data-desktopsmall="1" data-desktop="1" data-autoplay="true" data-delay="8000"
+      data-navigation="true">
+
+      {% for sl in sli %}
+      <div class="item">
+         <figure class="slider_image">
+            <img src="{{sl.Slider_img.url}}" alt="slider_img" class="img-responsive" />
+         </figure>
+         <div class="slider-text text-center">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12 text-left slider_animation">
+                     <h1 class="theme_slider_title ">{{sl.Slider_title}}</h1>
+                     <p class="slide-caption__desc ">
+                        <font color="red">Location..</font> {{sl.Location}}
+                     </p>
+                     <div class="sliderBtn margin-top-20">
+                        <a href="{% url 'zakat-info' %}" class="btn btn-secondary">Donate Your Zakat</a>
+                        <a href="{% url 'donate-info' %}" class="btn dark margin-left-20">Donate Now</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {%endfor%}
+   </div>
+
+   <!-- Home Slider -->
+
+
+
+   <!-- Info Form_Recent Event -->
+
+   <section class="typo-light bg-color-secondary getquote-section">
+      <div class="container">
+         <!-- Row -->
+         <div class="row">
+            <!-- Column -->
+
+            <div class="col-sm-3">
+               <!-- Get Quote Wrap -->
+
+               <div class="getquote-wrap">
+                  {% for con in cont%}
+                  <label>Come to office</label>
+                  <h6>{{con.Address}}</h6>
+                  {%endfor%}
+               </div>
+
+               <!-- Get Quote Wrap -->
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-sm-3">
+               <!-- Get Quote Wrap -->
+
+               <div class="getquote-wrap">
+                  {% for con in cont%}
+                  <label>Want to meet ?</label>
+                  <h6>{{con.Meet_Time}}</h6>
+                  {%endfor%}
+               </div>
+
+               <!-- Get Quote Wrap -->
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-sm-3">
+               <!-- Get Quote Wrap -->
+               <div class="getquote-wrap last">
+                  {% for con in cont%}
+                  <label>Need Assistence ?</label>
+                  <h6>Call Us : {{con.Phone}}</h6>
+                  {%endfor%}
+               </div>
+               <!-- Get Quote Wrap -->
+
+            </div>
+            <!-- Column -->
+
+            <!-- THE DIGITAL CLOCK. -->
+            <!-- Column -->
+            <div class="col-sm-3">
+
+               <div class="getquote-wrap last">
+                  {% for con in cont%}
+                  <label>Need Assistence ?</label>
+                  <h6>E-mail Us : {{con.Mail}}</h6>
+                  {%endfor%}
+               </div>
+
+               <!-- Get Quote Wrap -->
+            </div>
+            <!-- Column -->
+            <!-- THE DIGITAL CLOCK. -->
+         </div>
+         <!-- Row -->
+      </div>
+      <!-- Container -->
+   </section>
+   <!-- Section -->
+
+   <!-- Info Form_Recent Event -->
+
+
+   <!-- FOAP -->
+
+   <section id="Services" class="typo-dark">
+      <div class="container">
+
+         <div class="row">
+            <!-- Column -->
+            {% for f in fm %}
+            <div class="col-sm-6 col-md-3  pad-t-30">
+               <div class="contact-info text-center">
+                  <div class="info-icon bg-dark">
+                     <p>{{f.First_letter}}</p>
+                     <!--<i class="uni-equalizer"></i>-->
+                  </div>
+                  <h5 class="title">{{f.Full_name}}</h5>
+                  <p>{{f.Details | safe }}</p>
+               </div><!-- Contact Info -->
+            </div><!-- Column -->
+            <!-- Column -->
+            {%endfor%}
+
+         </div><!-- Row -->
+      </div><!-- Container -->
+   </section><!-- Section -->
+   <!-- FOAP -->
+
+
+
+
+   <!-- OUR GALLERY -->
+
+   <section id="Project" class="typo-dark bg-grey">
+      <!-- Container -->
+      <div class="container">
+         <!-- Title Block -->
+         <div class="col-md-12">
+            <div class="title-container sm">
+               <div class="title-wrap">
+                  <h3 class="title">OUR GALLERY</h3>
+                  <span class="separator line-separator"></span>
+               </div>
+            </div>
+            <!-- Title Container -->
+         </div>
+      </div><!-- Container -->
+      <div class="container-fluid pad-none">
+         <div class="col-md-12">
+            <div class="row">
+
+               <!-- Gallery Block -->
+               <div class="isotope-grid" data-gutter="0" data-columns="4">
+                  <div class="grid-sizer"></div>
+                  <!-- Portfolio Item -->
+
+                  {% for gal in g_image %}
+
+                  <div class="item all design web">
+                     <!-- Image Wrapper -->
+                     <div class="image-wrapper">
+                        <!-- IMAGE -->
+                        <img src="{{gal.Gallery_image.url}}" alt="" />
+                        <!-- Gallery Btns Wrapper -->
+                        <div class="gallery-detail btns-wrapper">
+
+                           <a href="{{gal.Gallery_image.url}}" data-rel="prettyPhoto[portfolio]"
+                              class="btn uni-full-screen"></a>
+                        </div>
+                        <!-- Gallery Btns Wrapper -->
+                     </div>
+                     <!-- Image Wrapper -->
+                  </div>
+                  {%endfor%}
+
+               </div>
+               <!-- Gallery Block -->
+            </div>
+            <!-- Column -->
+         </div>
+         <!-- Row -->
+      </div>
+   </section><!-- Section -->
+
+   <!-- OUR GALLERY -->
+
+
+
+   <!-- EVENT NEWS -->
+
+   <div id="Event-latest-update">
+      <h1>EVENT NEWS</h1>
+      <button type="button" class="Event-close" data-dismiss="hide">&times;</button>
+      <div class="clearfix"></div>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="4000">
+         <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+               <h5>RUNNING EVENT NEWS</h5>
+               {% for re in Re_list %}
+               {% if re.Active %}
+               <marquee width="Auto%" direction="left" scrollamount="2">
+                  <h6><a href="{% url 'running_detail' pk=re.pk %}" class="alert-link">{{re.Title}}</a></h6>
+               </marquee>
+               {% else %}
+               <h4></h4>
+               {% endif %}
+               {% endfor %}
+            </div>
+
+            <div class="item active">
+               <h5>UPCOMING EVENT NEWS</h5>
+               {% for ue in Up_list %}
+               {% if ue.Active %}
+               <marquee width="Auto%" direction="left" scrollamount="2">
+                  <h6><a href="{% url 'upcoming_detail' pk=ue.pk %}" class="alert-link">{{ue.Title}}</a></h6>
+               </marquee>
+               {% else %}
+               <h4></h4>
+               {%endif%}
+               {%endfor%}
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <script>
+      jQuery(document).ready(function ($) {
+         $('.Event-close').click(function (event) {
+            $('#Event-latest-update').hide('slow');
+            return false;
+         });
+      });
+   </script>
+
+   <!-- EVENT NEWS -->
+
+
+
+   <!-- Donation Packge-->
+
+   <section id="Pricing" class="typo-dark bg-grey">
+      <div class="container">
+         <div class="row pricing-sm-col">
+            <!-- Title Block -->
+            <div class="col-md-12">
+               <div class="title-container">
+                  <div class="title-wrap">
+                     <h3 class="title">WE ARE WAITING FOR YOUR SUPPORT</h3>
+                     <span class="separator line-separator"></span>
+                  </div>
+               </div><!-- Title Container -->
+            </div><!-- Title Block -->
+
+            {% for dp in donate_package %}
+
+            <div class="col-md-3 col-sm-6">
+               <!-- Donate Wrapper -->
+               <div class="pricing-wrap">
+                  <!-- Donate Header -->
+                  <div class="pricing-header">
+                     <!-- Donate Title -->
+                     <div class="pricing-title">
+                        <h4><span>{{dp.Title}}</span></h4>
+                     </div>
+                  </div><!-- Donate Header -->
+                  <!-- Donate Content -->
+                  <ul class="pricing-body">
+                     <li>{{dp.Field_1}}<span class="duration"></span></li>
+                     <li>{{dp.Field_2}}<span class="duration"></span></li>
+                     <li>{{dp.Field_3}}<span class="duration"></span></li>
+                     <li>{{dp.Field_4}}<span class="duration"></span></li>
+                     <li>{{dp.Field_5}}<span class="duration"></span></li>
+                     <li>
+                        <div class="pricing-value-wrap">
+                           <span class="currency-sign">$</span>
+                           <h3 class="pricing-value">{{dp.Amount}}</h3>
+                           <span class="secondary-text">/ {{dp.Choice}}</span>
+                        </div><!-- Donate Value -->
+                     </li>
+                  </ul><!-- Donate Content -->
+                  <!-- Donate Footer (Book Button) -->
+                  <div class="pricing-footer">
+                     <a href="{{dp.Link}}" class="btn">{{dp.Button_name}}</a>
+                  </div><!-- Donate Footer -->
+               </div><!-- Donate Wrapper -->
+            </div><!-- Column -->
+            {% endfor %}
+         </div><!-- row -->
+      </div>
+   </section>
+
+   <!-- Donation Packge-->
+
+
+
+
+   <!-- Blog -->
+
+   <section id="blog" class="blogsec">
+      <div class="container">
+         <div class="col-md-12">
+            <div class="title-container sm">
+               <div class="title-wrap">
+                  <h3 class="title">OUR LATEST NEWS</h3>
+                  <span class="separator line-separator"></span>
+               </div>
+            </div>
+            <!-- Title Container -->
+         </div>
+         <div class="row">
+            {% for ns in News_post %}
+            <!-- Item Begins -->
+            <div class="col-sm-4">
+               <!-- Blog Grid Wrapper -->
+               <div class="blog-wrap">
+                  <!-- Blog Image Wrapper -->
+                  <div class="blog-img-wrap">
+                     <img src="{{ns.Image_post.url}}" class="img-responsive" alt="Blog">
+                     <h6 class="post-type bg-pink">&nbsp;<i class="fa fa-microphone"></i>&nbsp;</h6>
+                  </div>
+                  <!-- Blog Wraper -->
+                  <!-- Blog Detail Wrapper -->
+                  <div class="bg-lgrey blog-details">
+                     <h4><a href="#">{{ns.Title}}</a></h4>
+                     <ul class="blog-meta">
+                        <li><i class="fa fa-calendar-o"></i>{{ns.Date_time}}</li>
+                     </ul>
+                     <!-- Blog Meta -->
+                     <p>{{ns.Short_describe}}</p>
+                     <a class="btn" href="{% url 'blog/blog_detail' pk=ns.pk %}">Read More</a>
+                  </div>
+                  <!-- Blog Detail Wrapper -->
+               </div>
+               <br>
+               <!-- Blog Wrapper -->
+            </div>
+            <!-- Column -->
+            {%endfor%}
+         </div>
+         <!-- Row -->
+      </div>
+      <!-- Container -->
+   </section>
+   <!-- Section -->
+
+   <!-- Blog -->
+
+
+
+
+   <!--RECENT EVENTS-->
+
+   <section id="Project" class="typo-dark bg-grey">
+      <!-- Container -->
+      <div class="container">
+         <!-- Title Block -->
+         <div class="col-md-12">
+            <div class="title-container sm">
+               <div class="title-wrap">
+                  <h3 class="title">OUR RECENT EVENTS</h3>
+                  <span class="separator line-separator"></span>
+               </div>
+            </div>
+            <!-- Title Container -->
+         </div>
+      </div><!-- Container -->
+      <!-- Related Post -->
+      <div class="owl-carousel" data-animatein="" data-animateout="" data-margin="30" data-loop="true" data-merge="true"
+         data-nav="true" data-dots="false" data-stagepadding="" data-items="1" data-mobile="1" data-tablet="3"
+         data-desktopsmall="3" data-desktop="3" data-autoplay="true" data-delay="8000" data-navigation="true">
+         {% for re in R_event%}
+         <div class="item">
+            <!-- Related Wrapper -->
+            <div class="related-wrap">
+               <!-- Related Image Wrapper -->
+               <div class="img-wrap">
+                  <img alt="Blog" class="img-responsive" src="{{re.Events_Image.url}}">
+               </div>
+               <!-- Related Content Wrapper -->
+               <div class="related-content">
+                  <h5 class="title">{{re.Title}}</h5>
+                  <ul class="blog-meta">
+                     <li><i class="fa fa-calendar-o"></i>{{re.Event_DT}}</li>
+                  </ul>
+               </div>
+               <!-- Related Content Wrapper -->
+            </div>
+            <!-- Related Wrapper -->
+         </div>
+         {% endfor %}
+         <!-- Item -->
+      </div>
+      <!-- Related Post -->
+   </section>
+   <!-- Section -->
+
+   <!--RECENT EVENTS-->
+
+
+
+   <!-- WHAT PEOPLE THINK ABOUT US-->
+   <section id="Services" class="typo-dark">
+      <div class="container">
+         <div class="title-container sm">
+            <div class="title-wrap">
+               <h3 class="title">WHAT PEOPLE THINK ABOUT US</h3>
+               <span class="separator line-separator"></span>
+            </div>
+         </div>
+         <div class="owl-carousel dots-square" data-animatein="" data-animateout="" data-items="1" data-margin="30"
+            data-loop="true" data-merge="true" data-nav="false" data-dots="false" data-stagepadding="" data-mobile="1"
+            data-tablet="1" data-desktopsmall="1" data-desktop="2" data-autoplay="true" data-delay="8000"
+            data-navigation="true">
+            {% for rv in review%}
+            <div class="item">
+               <!-- Blockquote Wrapper -->
+               <div class="quote-wrap dark">
+                  <blockquote>
+                     <p>{{rv.Comment |safe }}</p>
+                  </blockquote>
+                  <!-- Blockquote Author -->
+                  <div class="quote-author">
+                     <img src="{{rv.Image_review.url}}" class="img-responsive" alt="thumb">
+                     <!-- Blockquote Footer -->
+                     <div class="quote-footer">
+                        <h5 class="name"><a href="#">{{rv.Name}}</a></h5>
+                        <span>/ {{rv.Designation}}</span>
+                     </div>
+                     <!-- Blockquote Footer -->
+                  </div>
+                  <!-- Blockquote Author -->
+               </div>
+               <!-- Blockquote Wrapper -->
+            </div>
+            {% endfor %}
+            <!-- Item -->
+
+         </div>
+         <!-- Related Post -->
+   </section>
+   <!-- Section -->
+
+   <!-- WHAT PEOPLE THINK ABOUT US-->
+
+
+
+   <!-- Model Window -->
+
+   <div class="modal fade" id="quote" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+      <div class="modal-dialog" role="document">
+
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                     aria-hidden="true">&times;</span></button>
+               <h4 class="modal-title" id="myModalLabel">Contact Now</h4>
+            </div><!-- Model Header -->
+            <!-- Model Body -->
+            <div class="modal-body">
+               <div class="contact-model">
+                  <form method="post">
+                     <!-- Field 1 -->
+                     <div class="input-text form-group">
+                        <input type="text" name="contact_name" class="input-name form-control"
+                           placeholder="Full Name" />
+                     </div>
+                     <!-- Field 2 -->
+                     <div class="input-email form-group">
+                        <input type="email" name="contact_email" class="input-email form-control" placeholder="Email" />
+                     </div>
+                     <!-- Field 4 -->
+                     <div class="textarea-message form-group">
+                        <textarea name="contact_message" class="textarea-message form-control" placeholder="Message"
+                           rows="5"></textarea>
+                     </div>
+                     <!-- Button -->
+                     <button class="btn" type="submit">Send Now</button>
+                  </form>
+               </div><!-- Contact Info -->
+            </div><!-- Model Body -->
+         </div><!-- Model Content -->
+      </div><!-- Model Dialog -->
+   </div><!-- Model Ends -->
+</div>
+<!-- Page Main -->
+
+
+{% endblock %}
