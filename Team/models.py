@@ -24,3 +24,11 @@ class Doctor_team(models.Model):
     Phone = models.CharField(max_length=50)
     Email = models.CharField(max_length=50)
     Image = models.ImageField(upload_to='Doctor_team')
+
+
+class Adviser_team(models.Model):
+    Name = models.CharField(max_length=100)
+    Designation = models.CharField(max_length=100)
+    Phone = models.CharField(max_length=50)
+    Email = models.CharField(max_length=50, blank=True)
+    Image = models.ImageField(upload_to='Adviser_team')

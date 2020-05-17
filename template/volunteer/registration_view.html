@@ -1,0 +1,156 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* BLUE THEME */
+
+        .pagination {
+            text-align: center;
+            margin-top: 1em;
+        }
+
+        .pagination a {
+            text-decoration: none;
+        }
+
+        .pagination-number {
+            padding: 0.5em 0.8em;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #6D85C7;
+        }
+
+        .pagination-number:hover,
+        .pagination-current {
+            background-color: #3354AA;
+        }
+
+        .pagination-action {
+            margin: 0 0.1em;
+            display: inline-block;
+            padding: 0.5em 0.5em;
+            color: #B9B9B9;
+            font-size: 1.3em;
+        }
+
+        .pagination-action:hover,
+        .pagination-previous,
+        .pagination-next {
+            color: #3354AA;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="Team" class="typo-dark">
+        <div class="container">
+            <div class="row">
+                <!-- Title Block -->
+                <div class="col-md-12">
+                    <div class="title-container sm">
+                        <div class="title-wrap">
+                            <h3 class="title">Volunteer Resistration View</h3>
+                            <span class="separator line-separator"></span>
+                        </div>
+                    </div>
+                    <!-- Title Container -->
+                </div>
+                <!-- Title Block -->
+                <!-- Team Container -->
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <center>
+                                <form method="GET">
+
+                                    {{myfilter.form}}
+                                    <button type="submit" class="btn-sm" width="50" height="20">Search</button>
+
+                                </form>
+                            </center>
+                        </div>
+
+                    </div>
+
+                </div>
+                <br>
+                <div class="container">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>IMAGE</th>
+                                <th>FULL NAME</th>
+                                <th>CONTACT NUMBER</th>
+                                <th>E-MAIL</th>
+                                <th>PROFILE</th>
+                            </tr>
+                        </thead>
+                        {% for tm in reg_view %}
+                        <tbody>
+                            <tr>
+                                <td>{{tm.id}}</td>
+                                <td>
+                                    <span>
+                                        <center><img title="profile image" class="img-rounded img-responsive"
+                                                src="https://bootdey.com/img/Content/avatar/avatar1.png" width="50"
+                                                height="50"></center>
+                                    </span>
+                                </td>
+                                <td>{{tm.Full_Name}}</td>
+                                <td>{{tm.Contact}}</td>
+                                <td>{{tm.Email}}</td>
+                                <td>
+                                    <center><a class="btn" href="{% url 'profile_view' pk=tm.pk %}">View Profile</a>
+                                    </center>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+
+                    <div class="pagination">
+                        {% if reg_view.has_previous %}
+                        <a class="pagination-action" href="?page=1">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+                        <a class="pagination-action" href="?page={{ items.previous_page_number }}">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </a>
+                        {% endif %}
+                        {% for num in reg_view.paginator.page_range %}
+                        {% if reg_view.number == num %}
+                        <span class="pagination-number pagination-current">{{ num }}</span>
+                        {% elif num > reg_view.number|add:'-3' and num < reg_view.number|add:'3' %}
+                        <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% if reg_view.has_next %}
+                        <a class="pagination-action" href="?page={{ items.next_page_number }}">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="pagination-action" href="?page={{ items.paginator.num_pages }}">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </a>1
+                        {% endif %}
+                    </div>
+                    <!-- Row -->
+                </div>
+                <!-- Container -->
+    </section>
+
+</body>
+
+</html>
+{% endblock %}

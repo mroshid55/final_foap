@@ -21,4 +21,13 @@ class Doctor_Team_Admin(admin.ModelAdmin):
 
 admin.site.register(Doctor_team, Doctor_Team_Admin)
 
+
+class Adviser_Team_Admin(admin.ModelAdmin):
+    list_display = ('Name', 'Designation', 'Phone', 'Email')
+    list_filter = ('Name', 'Designation', 'Phone')
+    search_fields = ['Name', 'Designation', 'Phone']
+
+
+admin.site.register(Adviser_team, Adviser_Team_Admin)
+
 ##################################################################################

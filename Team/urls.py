@@ -15,5 +15,11 @@ urlpatterns = [
          views.doctor_view, name='doctor_view'),
 
 
+    path('adviser_team', views.adviser_team, name='adviser_team'),
+
+    path('adviser_view/<str:pk>',
+         views.adviser_view, name='adviser_view')
+
+
 
 ]

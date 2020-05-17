@@ -1,0 +1,114 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div role="main" class="main">
+        <div class="page-default typo-dark">
+
+            <!-- Container -->
+            <div class="container">
+                <!--{% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                    {% endfor %}
+                </div>
+                {% endif %}-->
+                <div class="row">
+                    <div class="service-single-details">
+                        <div class="title-container sm">
+                            <div class="title-wrap">
+                                <h3 class="title">Volunteer Registration</h3>
+                                <span class="separator line-separator"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="POST" style="margin-top: 1.3em;">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.First_Name|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.Last_Name|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.Full_Name|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.Father_Name|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.Mother_Name|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.Address|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.Institute|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.Contact|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.Email|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 mb-0">
+                                {{ form.Date_of_Birth|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-2 mb-0">
+                                {{ form.Gender|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-4 mb-0">
+                                {{ form.T_Shairt|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-4 mb-0">
+                                {{ form.Blood_Group|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.I_Agree_to_Terms|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 mb-0">
+                                <button type="submit" class="btn">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}

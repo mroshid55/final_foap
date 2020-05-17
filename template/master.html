@@ -172,8 +172,8 @@
                      </a>
                      <ul class="dropdown-menu">
                         <li><a href="{% url 'about-info' %}">The Organization</a></li>
-                        <li><a href="#">Vision Statement</a></li>
-                        <li><a href="#">Mission Statement</a></li>
+                        <li><a href="{% url 'vision_statement' %}">Vision Statement</a></li>
+                        <li><a href="{% url 'mission_statement' %}">Mission Statement</a></li>
                      </ul>
                   </li>
 
@@ -267,9 +267,9 @@
                         <li><a href="{% url 'index' %}">Home</a></li>
                         <li><a href="{% url 'zakat-info' %}">Zakat</a></li>
                         <li><a href="{% url 'donate-info' %}">Donate</a></li>
-                        <li><a href="#">Vision</a></li>
+                        <li><a href="{% url 'vision_statement' %}">Vision</a></li>
                         <li><a href="{% url 'about-info' %}">About Us</a></li>
-                        <li><a href="#">Mission</a></li>
+                        <li><a href="{% url 'mission_statement' %}">Mission</a></li>
                      </ul>
                   </div>
                   <!-- Widget -->
@@ -282,15 +282,18 @@
                      <h5 class="widget-title">Get involved<span></span></h5>
                      <ul class="tag-widget">
 
-                        <li><a href="{% url 'meet_the_team' %}">Our Team</a></li>
+                        <li><a href="{% url 'form_view' %}">Volunteer Registration Form</a></li>
+
+                        <li><a href="{% url 'join_in_volunteer' %}">Join In Volunteer</a></li>
 
                         <li><a href="{% url 'doctor_team' %}">Board of Doctor</a></li>
 
-                        <li><a href="{% url 'meet_the_team' %}">Board of Adviser</a></li>
+                        <li><a href="{% url 'meet_the_team' %}">Our Team</a></li>
+
+                        <li><a href="{% url 'adviser_team' %}">Board of Adviser</a></li>
 
                         <li><a href="{% url 'our_sponsor' %}">Sponsor/Partner</a></li>
 
-                        <li><a href="{% url 'join_in_volunteer' %}">Join In Volunteer</a></li>
 
                      </ul>
                   </div>

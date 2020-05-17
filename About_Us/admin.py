@@ -33,3 +33,25 @@ class Activity_Admin(admin.ModelAdmin):
 admin.site.register(Activity, Activity_Admin)
 
 ##################################################################################
+
+
+class Vision_Admin(admin.ModelAdmin):
+    list_display = ('id', 'Details')
+    list_filter = ('id', 'Details')
+    search_fields = ['id']
+
+
+admin.site.register(Vission, Vision_Admin)
+
+##################################################################################
+
+
+class Mission_Admin(admin.ModelAdmin):
+    list_display = ('id', 'Details')
+    list_filter = ('id', 'Details')
+    search_fields = ['id']
+
+
+admin.site.register(Mission, Mission_Admin)
+
+##################################################################################

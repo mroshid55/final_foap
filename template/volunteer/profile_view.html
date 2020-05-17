@@ -1,0 +1,126 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section id="Team" class="typo-dark">
+        <div class="container">
+            <div class="row">
+                <!-- Title Block -->
+                <div class="col-md-12">
+                    <div class="title-container sm">
+                        <div class="title-wrap">
+                            <h3 class="title">PROFILE VIEW</h3>
+                            <span class="separator line-separator"></span>
+                        </div>
+                    </div>
+                    <!-- Title Container -->
+                </div>
+                <div class="container bootstrap snippet">
+                    {% if reg_view.id%}
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h1>Profile Id: {{reg_view.id}}</h1>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="#" class="pull-right"><img title="profile image" class="img-rounded img-responsive"
+                                    src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <!--left col-->
+
+                            <ul class="list-group">
+                                <li class="list-group-item text-muted">Profile</li>
+                                <li class="list-group-item text-right"><span
+                                        class="pull-left"><strong>Joined:</strong></span>
+                                    2.13.2014</li>
+                                <li class="list-group-item text-right"><span class="pull-left"><strong>First
+                                            Name:</strong></span>
+                                    {{reg_view.First_Name}}</li>
+                                <li class="list-group-item text-right"><span class="pull-left"><strong>Last
+                                            Name:</strong></span>
+                                    {{reg_view.Last_Name}}</li>
+                                <li class="list-group-item text-right"><span
+                                        class="pull-left"><strong>Gender:</strong></span>
+                                    {{reg_view.Gender}}</li>
+
+                            </ul>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                                <div class="panel-body"><a href="https://foap.org.bd">https://foap.org.bd</a></div>
+                                <div class="panel-body"><a
+                                        href="https://facebook.com/foapofficial">https://facebook.com/foapofficial</a>
+                                </div>
+                            </div>
+
+                            <ul class="list-group">
+                                <li class="list-group-item text-muted">Contact Info</li>
+                                <li class="list-group-item text-right"><span class="pull-left"><strong>Phone
+                                            Number:</strong></span>{{reg_view.Contact}}
+                                </li>
+                                <li class="list-group-item text-right"><span
+                                        class="pull-left"><strong>E-mail:</strong></span>{{reg_view.Email}}</li>
+
+                            </ul>
+
+                        </div>
+                        <!--/col-3-->
+                        <div class="col-sm-9">
+
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="details">
+                                    <div class="table-responsive">
+                                        <p><b>Full Name:</b> {{reg_view.Full_Name}}</p>
+                                        <p><b>Father Name:</b> {{reg_view.Father_Name}}</p>
+                                        <p><b>Mother Name:</b> {{reg_view.Mother_Name}}</p>
+                                        <p><b>Institute:</b> {{reg_view.Institute}}</p>
+                                        <p><b>Address:</b> {{reg_view.Address}}</p>
+                                        <p><b>Gender:</b> {{reg_view.Gender}}</p>
+                                        <p><b>Blood Group:</b> {{reg_view.Blood_Group}}</p>
+                                        <p><b>T-Shairt:</b> {{reg_view.T_Shairt}}</p>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-4 col-md-offset-4 text-center">
+                                                <ul class="pagination" id="myPager"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/table-resp-->
+
+                                    <hr>
+
+                                </div>
+
+
+                            </div>
+                            <!--/tab-content-->
+
+                        </div>
+                        <!--/col-9-->
+                        {%endif%}
+                    </div>
+                    <!--/row-->
+    </section>
+
+</body>
+
+</html>
+{% endblock %}
