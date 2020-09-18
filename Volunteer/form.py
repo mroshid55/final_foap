@@ -26,10 +26,10 @@ class RegistrationForm(forms.ModelForm):
     I_Agree_to_Terms = forms.BooleanField(
         error_messages={
             'required': 'You must accept the terms and conditions'},
-        label="Terms&Conditions"
+        label="Terms & Conditions"
     )
 
     class Meta:
         model = Registration
         fields = ('First_Name', 'Last_Name', 'Full_Name', 'Father_Name', 'Mother_Name', 'Institute', 'Contact',
-                  'Address', 'Email', 'Date_of_Birth', 'T_Shairt', 'Gender', 'Blood_Group', 'I_Agree_to_Terms')
+                  'Address', 'Email', 'Date_of_Birth', 'T_Shairt', 'Gender', 'Blood_Group', 'Picture', 'I_Agree_to_Terms')

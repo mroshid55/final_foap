@@ -42,7 +42,7 @@ def registration(request):
 
     new_from = None
     if request.method == 'POST':
-        form = RegistrationForm(data=request.POST)
+        form = RegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             new_from = form.save(commit=False)
             new_from.save()

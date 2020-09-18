@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+from PIL import Image
 
 
 class Volunteer(models.Model):
@@ -26,9 +28,19 @@ class Registration(models.Model):
     Institute = models.CharField(max_length=150)
     Contact = models.CharField(max_length=50)
     Address = models.TextField()
+    Joined = models.DateTimeField(auto_now_add=True)
     Date_of_Birth = models.DateField()
     Email = models.EmailField()
     T_Shairt = models.CharField(max_length=6, choices=Select_value1)
     Gender = models.CharField(max_length=15, choices=Select_value2)
     Blood_Group = models.CharField(max_length=20, choices=Select_value3)
+    Picture = models.ImageField(upload_to="Profile_picture")
     I_Agree_to_Terms = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.Picture.path)
+        if img.height > 300 or img.weight > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.Picture.path)

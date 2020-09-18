@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    # User Definition Application
     'Home_Page',
     'Program',
     'Projects',
@@ -46,6 +48,8 @@ INSTALLED_APPS = [
     'embed_video',
     'grappelli',
     'django_filters',
+
+    # Default Application
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # -- media file url --
 MEDIA_URL = '/media/'
