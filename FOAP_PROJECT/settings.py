@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'embed_video',
     'grappelli',
     'django_filters',
+    'Newsletters',
 
     # Default Application
     'django.contrib.admin',

@@ -39,6 +39,8 @@ urlpatterns = [
 
     path('Donate/', include('Donate.urls')),
 
+    path('Newsletters/', include('Newsletters.urls')),
+
     path('foap-admin/', admin.site.urls),
 
     path('grappelli/', include('grappelli.urls')),  # grappelli URLS
