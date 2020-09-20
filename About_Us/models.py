@@ -25,6 +25,10 @@ class Activity(models.Model):
 class Vission(models.Model):
     Details = RichTextField()
 
+    class Meta:
+        verbose_name = 'Vission'
+        verbose_name_plural = 'Visions'
+
 
 class Mission(models.Model):
     Details = RichTextField()

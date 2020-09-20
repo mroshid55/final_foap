@@ -103,3 +103,13 @@ class Review_Admin(admin.ModelAdmin):
 
 admin.site.register(Review, Review_Admin)
 ##################################################################################
+
+
+class Social_link_Admin(admin.ModelAdmin):
+    list_display = ('Name', 'Href', 'Class_Name')
+    list_filter = ('Name', 'Class_Name')
+    search_fields = ['Name', 'Class_Name']
+
+
+admin.site.register(Social_link, Social_link_Admin)
+##################################################################################

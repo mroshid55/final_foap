@@ -83,11 +83,9 @@
 
 
             <ul class="social-icons">
-               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-               <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-               <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            {% for slk in slink %}
+               <li><a href="{{slk.Href}}"><i class="{{slk.Class_Name}}"></i></a></li>
+            {%endfor%}
             </ul>
 
 
@@ -248,11 +246,9 @@
                   <div class="widget">
                      <!-- Social Icons Color -->
                      <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        {% for slk in slink %}
+                            <li><a href="{{slk.Href}}"><i class="{{slk.Class_Name}}"></i></a></li>
+                        {%endfor%}
                      </ul>
                   </div>
                   <!-- Widget -->
@@ -282,17 +278,17 @@
                      <h5 class="widget-title">Get involved<span></span></h5>
                      <ul class="tag-widget">
 
-                        <li><a href="{% url 'form_view' %}">Volunteer Registration Form</a></li>
+                        <li><a href="{% url 'form_view' %}">Volunteer registration</a></li>
 
-                        <li><a href="{% url 'join_in_volunteer' %}">Join In Volunteer</a></li>
+                        <li><a href="{% url 'join_in_volunteer' %}">Join our global community</a></li>
 
-                        <li><a href="{% url 'doctor_team' %}">Board of Doctor</a></li>
+                        <li><a href="{% url 'doctor_team' %}">Board of doctor</a></li>
 
-                        <li><a href="{% url 'meet_the_team' %}">Our Team</a></li>
+                        <li><a href="{% url 'meet_the_team' %}">Our team</a></li>
 
-                        <li><a href="{% url 'adviser_team' %}">Board of Adviser</a></li>
+                        <li><a href="{% url 'adviser_team' %}">Board of adviser</a></li>
 
-                        <li><a href="{% url 'our_sponsor' %}">Sponsor/Partner</a></li>
+                        <li><a href="{% url 'our_sponsor' %}">Sponsor/partner</a></li>
 
 
                      </ul>
@@ -337,7 +333,7 @@
                <div class="col-md-6">
                   <nav class="sm-menu">
                      <ul>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="https://mobile.facebook.com/mroshid71">Developed by MroshiD</a></li>
                      </ul>
                   </nav>
                   <!-- Nav -->

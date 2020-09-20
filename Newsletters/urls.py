@@ -7,7 +7,7 @@ urlpatterns = [
     path('newslettersignup', views.newslettersignup,
          name='newslettersignup'),
 
-    path('Message', views.success_message, name='Message')
+    path('SignUp_Message', views.success_message_newsletters, name='SignUp_Message')
 
 
 

@@ -10,6 +10,7 @@ def index(request):
     cont = Contact.objects.all()  # Model Class Contact
     sli = Slider.objects.all()  # Model Class Slider
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     fm = FOAP.objects.all().order_by('id')
     donate_package = Package.objects.all().order_by('-id')
     News_post = New.objects.all().order_by('-Date_time')
@@ -22,7 +23,7 @@ def index(request):
     context = {'cont': cont, 'logo': logo,
                'sli': sli, 'fm': fm, 'donate_package': donate_package,
                'News_post': News_post, 'R_event': R_event, 'review': review,
-               'g_image': g_image, 'Re_list': Re_list, 'Up_list': Up_list}  # Data Dictionary
+               'g_image': g_image, 'Re_list': Re_list, 'Up_list': Up_list, 'slink': slink}  # Data Dictionary
     return render(request, 'index.html', context)
 ##########################################################
 
@@ -54,8 +55,10 @@ def blog_detail(request, pk):
 
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
+
     context = {'N_id': N_id, 'cont': cont, 'logo': logo, 'comments': comments,
-               'new_comment': new_comment, 'comment_form': comment_form}
+               'new_comment': new_comment, 'comment_form': comment_form, 'slink': slink}
     return render(request, 'blog/blog-detail.html', context)
 
 #############################################################################################

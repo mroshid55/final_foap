@@ -10,7 +10,8 @@ def video(request):
     vg = Video_Gallery.objects.all().order_by('-id')
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
-    return render(request, 'gallery/video.html', {'vg': vg, 'cont': cont, 'logo': logo})
+    slink = Social_link.objects.all()  # Model Class Social Link
+    return render(request, 'gallery/video.html', {'vg': vg, 'cont': cont, 'logo': logo, 'slink': slink})
 
 ###############################################################################################
 
@@ -21,6 +22,7 @@ def image(request):
     g_image = Image_Gallery.objects.all().order_by('-id')
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
-    return render(request, 'gallery/image.html', {'g_image': g_image, 'cont': cont, 'logo': logo})
+    slink = Social_link.objects.all()  # Model Class Social Link
+    return render(request, 'gallery/image.html', {'g_image': g_image, 'cont': cont, 'logo': logo, 'slink': slink})
 
 ###############################################################################################

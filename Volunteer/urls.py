@@ -19,8 +19,8 @@ urlpatterns = [
     path('profile_view/<str:pk>', views.profile_view,
          name='profile_view'),
 
-    path('Message', views.success_message,
-         name='Message')
+    path('Registration_Message', views.success_message,
+         name='Registration_Message')
 
 
 

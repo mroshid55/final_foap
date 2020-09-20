@@ -14,6 +14,7 @@ def newslettersignup(request):
 
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
 
     form = NewsletterSignUpForm(request.POST or None)
     if request.method == 'POST':
@@ -24,12 +25,12 @@ def newslettersignup(request):
                     request, 'Your Email Already Exists In Our Database', 'alert alert-warning alert-dismissible')
             else:
                 instance.save()
-                return redirect('Message')
+                return redirect('SignUp_Message')
         else:
             form = NewsletterSignUpForm()
 
-    return render(request, 'newsletters/signup.html', {'cont': cont, 'logo': logo, 'form': form})
+    return render(request, 'newsletters/signup.html', {'cont': cont, 'logo': logo, 'form': form, 'slink': slink})
 
 
-def success_message(request):
-    return render(request, 'newsletters/success.html')
+def success_message_newsletters(request):
+    return render(request, 'newsletters/signup_success.html')

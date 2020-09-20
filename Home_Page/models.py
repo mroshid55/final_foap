@@ -99,3 +99,9 @@ class Review(models.Model):
     Image_review = models.ImageField(upload_to='Review')
 
 ###########################################################################
+
+
+class Social_link(models.Model):
+    Name = models.CharField(max_length=150)
+    Href = models.CharField(max_length=500)
+    Class_Name = models.CharField(max_length=150)

@@ -9,6 +9,7 @@ def chart(request):
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
     context = Chart.objects.all()
-    return render(request, 'charts/program_chart.html', {'cont': cont, 'logo': logo, 'context': context})
+    slink = Social_link.objects.all()  # Model Class Social Link
+    return render(request, 'charts/program_chart.html', {'cont': cont, 'logo': logo, 'context': context, 'slink': slink})
 
 ###############################################################################################

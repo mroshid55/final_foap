@@ -34,6 +34,22 @@
                                 <h3 class="title">Volunteer Registration</h3>
                                 <span class="separator line-separator"></span>
                             </div>
+
+
+                            <!--message-->
+                     {% if messages %}
+                        {% for message in messages %}
+                            <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                                 {{ message }}
+                               </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <!--message-->
+                    
                         </div>
                     </div>
                     <form method="POST" enctype="multipart/form-data" style="margin-top: 1.3em;">

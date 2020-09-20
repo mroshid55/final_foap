@@ -11,9 +11,10 @@ def donate(request):
     logo = Logo.objects.all()  # Model Class Logo
     d_m = Donate_Mobile.objects.all()  # Model Class Mobile_banking_info
     d_b = Donate_Bank.objects.all()  # Model Class Bank_account_info
+    slink = Social_link.objects.all()  # Model Class Social Link
 
     context = {'cont': cont, 'logo': logo,
-               'd_m': d_m, 'd_b': d_b}
+               'd_m': d_m, 'd_b': d_b, 'slink': slink}
     return render(request, 'donate/donate_info.html', context)
 
 #--zakat page--#
@@ -25,9 +26,10 @@ def zakat(request):
     z_m = Zakat_Mobile.objects.all()  # Model Class Mobile_banking_info
     z_b = Zakat_Bank.objects.all()  # Model Class Bank_account_info
     hadith = Quran_hadith_info.objects.all()  # Model Class Quran_hadith_info
+    slink = Social_link.objects.all()  # Model Class Social Link
 
     context = {'cont': cont, 'logo': logo,
-               'z_m': z_m, 'z_b': z_b, 'hadith': hadith}
+               'z_m': z_m, 'z_b': z_b, 'hadith': hadith, 'slink': slink}
     return render(request, 'donate/zakat_info.html', context)
 
 ###############################################################################################

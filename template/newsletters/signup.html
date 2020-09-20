@@ -26,7 +26,9 @@
                         <h3 class="title">Subcribe for foap newsletter</h3>
                         <span class="separator line-separator"></span>
                     </div>
-
+                    
+                    <!--message-->
+                    
                     {% if messages %}
                     {% for message in messages %}
                     <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
@@ -37,6 +39,9 @@
                     </div>
                     {% endfor %}
                     {% endif %}
+
+                    <!--message-->
+
                     <!-- Widget -->
                      <form method="POST" enctype="multipart/form-data" style="margin-top: 1.3em;">
                         {% csrf_token %}

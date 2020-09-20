@@ -30,8 +30,9 @@ from django.template.loader import render_to_string
 def volunteer(request):
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     Volun_teen = Volunteer.objects.all()
-    return render(request, 'volunteer/join_in_volunteer.html', {'cont': cont, 'logo': logo, 'Volun_teen': Volun_teen})
+    return render(request, 'volunteer/join_in_volunteer.html', {'cont': cont, 'logo': logo, 'Volun_teen': Volun_teen, 'slink': slink})
 
 ###############################################################################################
 
@@ -39,36 +40,38 @@ def volunteer(request):
 def registration(request):
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
 
-    new_from = None
+    form = RegistrationForm(request.POST, request.FILES)
     if request.method == 'POST':
-        form = RegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            new_from = form.save(commit=False)
-            new_from.save()
-#--Email setting Start--#
-            # cleaned_data from RegistrationForm
-            Email_Name = form.cleaned_data['Email']
-            # cleaned_data from RegistrationForm
-            F_Name = form.cleaned_data['Full_Name']
-            template = render_to_string(
-                'volunteer/mail_temp.html', {'Name': F_Name})
-            email = EmailMessage(
-                'Thanks For Registration',
-                template,
-                settings.EMAIL_HOST_USER,
-                [Email_Name],
-            )
-            email.fail_silently = False
-            email.send()
-#--Email setting End--#
-            #messages.success(request, 'Form Submission Successful')
-            return redirect('Message')
+            instance = form.save(commit=False)
+            if Registration.objects.filter(Email=instance.Email).exists():
+                messages.warning(request, 'Your Email Already Registered In Our Database, Please Try Another Email.',
+                                 'alert alert-warning alert-dismissible')
+            else:
+                instance.save()
+                #--Email setting Start--#
 
-    else:
-        form = RegistrationForm()
+                #--cleaned_data from RegistrationForm--#
 
-    return render(request, 'volunteer/registration_form.html', {'cont': cont, 'logo': logo, 'form': form, 'new_from': new_from})
+                Email_Name = form.cleaned_data['Email']
+                F_Name = form.cleaned_data['Full_Name']
+                #--cleaned_data from RegistrationForm--#
+                template = render_to_string(
+                    'volunteer/mail_temp.html', {'Name': F_Name})
+                email = EmailMessage(
+                    'Thanks For Registration', template, settings.EMAIL_HOST_USER, [Email_Name],)
+                email.fail_silently = False
+                email.send()
+                #--Email setting End--#
+
+                # #messages.success(request, 'Form Submission Successful')
+                return redirect('Registration_Message')
+        else:
+            form = RegistrationForm()
+
+    return render(request, 'volunteer/registration_form.html', {'cont': cont, 'logo': logo, 'form': form, 'slink': slink})
 
 ###############################################################################################
 
@@ -76,6 +79,7 @@ def registration(request):
 def registration_view(request):
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     reg_view = Registration.objects.all()
     myfilter = ProfileFilter(request.GET, queryset=reg_view)
     reg_view = myfilter.qs
@@ -85,24 +89,27 @@ def registration_view(request):
     reg_view = paginator.get_page(page)
 
     context = {'cont': cont, 'logo': logo,
-               'reg_view': reg_view, 'myfilter': myfilter}
+               'reg_view': reg_view, 'myfilter': myfilter, 'slink': slink}
     return render(request, 'volunteer/registration_view.html', context)
 
 
 def profile_view(request, pk):
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     reg_view = get_object_or_404(Registration, pk=pk)
-    context = {'cont': cont, 'logo': logo, 'reg_view': reg_view}
+    context = {'cont': cont, 'logo': logo,
+               'reg_view': reg_view, 'slink': slink}
     return render(request, 'volunteer/profile_view.html', context)
 
 
 def form_view(request):
     cont = Contact.objects.all()  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
-    context = {'cont': cont, 'logo': logo}
+    slink = Social_link.objects.all()  # Model Class Social Link
+    context = {'cont': cont, 'logo': logo, 'slink': slink}
     return render(request, 'volunteer/form_view.html', context)
 
 
 def success_message(request):
-    return render(request, 'volunteer/success.html')
+    return render(request, 'volunteer/registration_success.html')

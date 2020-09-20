@@ -7,8 +7,9 @@ from Home_Page.models import *
 def on_going_projects(request):
     cont = Contact.objects.all().order_by('-id')  # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     ogp = On_going_projects.objects.all()
-    return render(request, 'projects/on_going_projects.html', {'cont': cont, 'logo': logo, 'ogp': ogp})
+    return render(request, 'projects/on_going_projects.html', {'cont': cont, 'logo': logo, 'ogp': ogp, 'slink': slink})
 
 ###############################################################################################
 
@@ -18,8 +19,9 @@ def on_going_projects(request):
 def completed_projects(request):
     cont = Contact.objects.all().order_by('-id')   # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     ogp = Completed_projects.objects.all()
-    return render(request, 'projects/completed_projects.html', {'cont': cont, 'logo': logo, 'ogp': ogp})
+    return render(request, 'projects/completed_projects.html', {'cont': cont, 'logo': logo, 'ogp': ogp, 'slink': slink})
 
 ###############################################################################################
 
@@ -29,7 +31,8 @@ def completed_projects(request):
 def upcoming_projects(request):
     cont = Contact.objects.all().order_by('-id')   # Model Class Contact
     logo = Logo.objects.all()  # Model Class Logo
+    slink = Social_link.objects.all()  # Model Class Social Link
     ogp = Upcoming_projects.objects.all()
-    return render(request, 'projects/upcoming_projects.html', {'cont': cont, 'logo': logo, 'ogp': ogp})
+    return render(request, 'projects/upcoming_projects.html', {'cont': cont, 'logo': logo, 'ogp': ogp, 'slink': slink})
 
 ###############################################################################################
