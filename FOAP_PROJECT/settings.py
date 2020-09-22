@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'grappelli',
     'django_filters',
     'Newsletters',
+    'Contact',
 
     # Default Application
     'django.contrib.admin',

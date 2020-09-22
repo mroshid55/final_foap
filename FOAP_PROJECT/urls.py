@@ -41,6 +41,8 @@ urlpatterns = [
 
     path('Newsletters/', include('Newsletters.urls')),
 
+    path('Contact/', include('Contact.urls')),
+
     path('foap-admin/', admin.site.urls),
 
     path('grappelli/', include('grappelli.urls')),  # grappelli URLS

@@ -1,0 +1,81 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+   <!--=================================
+ Page Section -->
+
+<section id="contact">
+  <div class="container">
+    <div class="col-md-12">
+                <div class="title-container sm">
+                    <div class="title-wrap">
+                        <h3 class="title">Contact Us</h3>
+                        <span class="separator line-separator"></span>
+                    </div>
+                    <!--message-->
+                     {% if messages %}
+                        {% for message in messages %}
+                            <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                                 {{ message }}
+                               </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <!--message-->
+                </div>
+	
+	<div class="row">
+	  <div class="col-md-7">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3736489.7218514383!2d90.21589792292741!3d23.857125486636733!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1506502314230" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+      <div class="col-md-5">
+          <h4><strong>Get in Touch</strong></h4>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="form-group">
+            {{ form.Name|as_crispy_field }}
+          </div>
+          <div class="form-group">
+            {{ form.Email|as_crispy_field }}
+          </div>
+          <div class="form-group">
+            {{ form.Phone|as_crispy_field }}
+          </div>
+          <div class="form-group">
+            {{ form.Body|as_crispy_field }}
+          </div>
+          <button class="btn btn-default" type="submit" name="button">
+              <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--=================================
+ page-section --> 
+
+</body>
+
+</html>
+{% endblock %}
