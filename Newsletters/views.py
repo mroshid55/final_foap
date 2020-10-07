@@ -9,6 +9,17 @@ from Home_Page.models import *
 #--Import Form--#
 from .form import *
 
+#--Email Start--#
+
+# Email sender django
+from django.core.mail import EmailMessage
+# EMAIL_HOST_USER call from settings
+from django.conf import settings
+# Call from template mail_temp.html
+from django.template.loader import render_to_string
+
+#--Email End--#
+
 
 def newslettersignup(request):
 
@@ -25,6 +36,21 @@ def newslettersignup(request):
                     request, 'Your Email Already Exists In Our Database', 'alert alert-warning alert-dismissible')
             else:
                 instance.save()
+                #--Email setting Start--#
+
+                #--cleaned_data from RegistrationForm--#
+
+                Email_Name = form.cleaned_data['Email']
+
+                #--cleaned_data from RegistrationForm--#
+
+                template = render_to_string('newsletters/mail_sign.html')
+                email = EmailMessage(
+                    'Thanks for Subscribing', template, settings.EMAIL_HOST_USER, [Email_Name],)
+                email.fail_silently = False
+                email.send()
+                #--Email setting End--#
+
                 return redirect('SignUp_Message')
         else:
             form = NewsletterSignUpForm()
